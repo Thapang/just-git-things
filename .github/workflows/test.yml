@@ -1,17 +1,21 @@
 name: Tests
+
 on:
   push:
     branches: [main]
-  pull_reuest:
+  pull_request:
     branches: [main]
 
 jobs:
   test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      -uses: action/checkout@v4
-      -uses: action/setup-python@v5
-      with:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
           python-version: "3.12"
-      -run: pip install pytest
-      -run: pytest          
+
+      - run: pip install pytest
+
+      - run: pytest
